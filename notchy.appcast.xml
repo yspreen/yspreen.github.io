@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Notchy</title>
+        <item>
+            <title>0.0.2</title>
+            <pubDate>Sat, 04 Dec 2021 22:30:20 +0100</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.0.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://yspreen.com/notchy_0.0.2.dmg" length="1260413" type="application/octet-stream" sparkle:edSignature="ga2al0Upbygz04EsCWkw9Qa/QW4wEDhy32C6zX8hgnX656JIHAFPhpLDIld54kW27LrND+IgzTjHLtRVP4aaDg=="/>
+        </item>
+    </channel>
+</rss>
