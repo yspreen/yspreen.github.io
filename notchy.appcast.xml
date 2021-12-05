@@ -3,12 +3,12 @@
     <channel>
         <title>Notchy</title>
         <item>
-            <title>0.0.2</title>
-            <pubDate>Sun, 05 Dec 2021 05:21:46 +0100</pubDate>
-            <sparkle:version>2</sparkle:version>
-            <sparkle:shortVersionString>0.0.2</sparkle:shortVersionString>
+            <title>0.0.3</title>
+            <pubDate>Sun, 05 Dec 2021 20:47:05 +0100</pubDate>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.0.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://yspreen.com/notchy_0.0.2.dmg" length="1382174" type="application/octet-stream" sparkle:edSignature="klhqyWlYrQze2tBUmnxcKfuOYwN61vcz+2HT4r/+rNPFT8hQ/HgyqTvYGpdrIEt2ptprCH021Cmfg5bO9EdDDQ=="/>
+            <enclosure url="https://yspreen.com/notchy.dmg" length="2073414" type="application/octet-stream" sparkle:edSignature="Tiz6dHymPfU+wRYsMAx8AZcIuARP5DEvibcPdiccrcVCwn8Kc0i9JtLhsw6CnpxdtElB5FRQ+vol+dzW6JLvBg=="/>
         </item>
     </channel>
 </rss>
