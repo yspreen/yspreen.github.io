@@ -1,0 +1,554 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@import url("https://fonts.googleapis.com/css?family=Anton");
+
+/*
+
+SASS, broken on Codepen:
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+.body,
+.inner {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100%;
+  width: 80%;
+  .lines {
+    opacity: 0.1;
+  }
+}
+
+.tile {
+  width: 25%;
+  height: 20%;
+  position: absolute;
+  transition: all 0.5s;
+
+  padding: 0%;
+  &.wide {
+    width: 50%;
+  }
+  &.tall {
+    height: 40%;
+  }
+}
+
+@keyframes bnc-u {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.25em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bnc-d {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.25em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bnc-l {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-0.25em);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes bnc-r {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.25em);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+$list: u d l r;
+
+@each $dir in $list {
+  .bounce-#{$dir} {
+    animation: bnc-#{$dir} 0.4s;
+  }
+}
+
+.inner-wr {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.inner {
+  position: absolute;
+  top: 0.175em;
+  right: 0.175em;
+  bottom: 0.175em;
+  left: 0.175em;
+
+  background-color: rgb(233, 232, 230);
+  border-radius: 0.3em;
+  box-shadow: 0 0.056em 0.093em 0 rgba(0, 0, 0, 0.2),
+    0 0.056em 0.168em 0 rgba(0, 0, 0, 0.2);
+}
+.dot {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0.15em 0.019em rgba(0, 0, 0, 0.6);
+}
+
+.dot {
+  background-color: rgb(240, 230, 0);
+  .tall &,
+  .wide & {
+    background-color: rgb(220, 0, 0);
+  }
+  .tile.tall.wide & {
+    background-color: rgb(60, 60, 60);
+  }
+}
+
+.tile .arrow {
+  opacity: 0.2;
+  &::before,
+  &::after {
+    border: 0 solid black;
+    border-width: 0.1em 0 0;
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 86%;
+    height: 100%;
+    width: 25%;
+    transform-origin: top left;
+    transform: rotate(-37deg) translateX(-0.07em);
+  }
+
+  &::after {
+    transform: rotate(37deg) scaleX(-1) translateX(-0.07em);
+  }
+}
+
+.goal {
+  opacity: 0.5;
+  position: absolute;
+  left: 24%;
+  width: 52%;
+  height: 0.1em;
+  background-color: black;
+  top: 101%;
+}
+
+.v-line,
+.h-line {
+  position: absolute;
+  background-color: black;
+}
+.v-line {
+  width: 0.07em;
+  height: 100%;
+  transform: translateX(-50%);
+}
+@for $i from 1 through 4 {
+  .v-line-#{$i} {
+    left: 25% * $i;
+  }
+}
+
+.h-line {
+  width: 100%;
+  height: 0.07em;
+  transform: translateY(-50%);
+}
+@for $i from 1 through 5 {
+  .h-line-#{$i} {
+    top: 20% * $i;
+  }
+}
+
+.h-line-0 {
+  box-sizing: content-box;
+  border: 0 solid black;
+  border-width: 0 .035em;
+  border-radius: .07em .07em 0 0;
+  transform: translateY(-50%) translateX(-.035em);
+}
+.h-line-5 {
+  box-sizing: content-box;
+  border: 0 solid black;
+  border-width: 0 .035em;
+  border-radius: 0 0 .07em .07em;
+  transform: translateY(-50%) translateX(-.035em);
+}
+*/
+
+html,
+body,
+.grid-wr,
+.grid {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.grid {
+  width: 90%;
+  height: 90%;
+}
+
+.grid-wr {
+  background-color: white;
+  border: 0.2em solid #74161e;
+  border-radius: 0.2em;
+}
+
+body {
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    45deg,
+    #1b3774,
+    #1b3774 4vh,
+    #111f4a 4vh,
+    #111f4a 8vh
+  );
+}
+
+body,
+.body,
+.inner,
+.grid-wr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid .lines {
+  opacity: 0.1;
+}
+
+.tile {
+  width: 25%;
+  height: 20%;
+  position: absolute;
+  transition: left 0.5s, top 0.5s;
+  padding: 0%;
+  touch-action: none;
+}
+.tile.wide {
+  width: 50%;
+}
+.tile.tall {
+  height: 40%;
+}
+
+.inner-wr {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.inner {
+  position: absolute;
+  top: 0.175em;
+  right: 0.175em;
+  bottom: 0.175em;
+  left: 0.175em;
+  background-color: #e9e8e6;
+  border-radius: 0.3em;
+  box-shadow: 0 0.056em 0.093em 0 rgba(0, 0, 0, 0.2),
+    0 0.056em 0.168em 0 rgba(0, 0, 0, 0.2);
+}
+
+.dot {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0.15em 0.019em rgba(0, 0, 0, 0.6);
+}
+
+.dot {
+  background-color: #f0e600;
+}
+.tall .dot,
+.wide .dot {
+  background-color: #dc0000;
+}
+.tile.tall.wide .dot {
+  background-color: #3c3c3c;
+}
+
+.tile .arrow {
+  opacity: 0.2;
+}
+.tile .arrow::before,
+.tile .arrow::after {
+  border: 0 solid black;
+  border-width: 0.1em 0 0;
+  content: "";
+  /* display: inline-block; */
+  left: 50%;
+  position: absolute;
+  top: 86%;
+  height: 100%;
+  width: 25%;
+  transform-origin: top left;
+  transform: rotate(-37deg) translateX(-0.07em);
+}
+.tile .arrow::after {
+  transform: rotate(37deg) scaleX(-1) translateX(-0.07em);
+}
+
+.no-anim {
+  transition: initial !important;
+}
+
+.goal {
+  opacity: 0.5;
+  position: absolute;
+  left: 24%;
+  width: 52%;
+  height: 0.1em;
+  background-color: black;
+  top: 101%;
+}
+
+.v-line,
+.h-line {
+  position: absolute;
+  background-color: black;
+}
+
+.v-line {
+  width: 0.07em;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.v-line-1 {
+  left: 25%;
+}
+
+.v-line-2 {
+  left: 50%;
+}
+
+.v-line-3 {
+  left: 75%;
+}
+
+.v-line-4 {
+  left: 100%;
+}
+
+.h-line {
+  width: 100%;
+  height: 0.07em;
+  transform: translateY(-50%);
+}
+
+.h-line-1 {
+  top: 20%;
+}
+
+.h-line-2 {
+  top: 40%;
+}
+
+.h-line-3 {
+  top: 60%;
+}
+
+.h-line-4 {
+  top: 80%;
+}
+
+.h-line-5 {
+  top: 100%;
+}
+
+.h-line-0 {
+  box-sizing: content-box;
+  border: 0 solid black;
+  border-width: 0 0.035em;
+  border-radius: 0.07em 0.07em 0 0;
+  transform: translateY(-50%) translateX(-0.035em);
+}
+
+.h-line-5 {
+  box-sizing: content-box;
+  border: 0 solid black;
+  border-width: 0 0.035em;
+  border-radius: 0 0 0.07em 0.07em;
+  transform: translateY(-50%) translateX(-0.035em);
+}
+
+.name {
+  color: white;
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.1rem;
+  font-size: 0.4em;
+  font-family: "Noto Sans";
+}
+
+.fadeout {
+  opacity: 0;
+  transition: opacity 2s, transform 2s ease-out;
+}
+.fadeout.tall.wide {
+  transform: translateY(150%);
+}
+.btn.reset {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.1rem;
+  font-size: 0.4em;
+  padding: 0.375em 0.75em;
+  font-family: "Noto Sans";
+}
+
+.win-wr {
+  position: absolute;
+  background: rgba(10, 20, 40, 1);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.win-wr.show {
+  opacity: 1;
+  pointer-events: initial;
+  transition: opacity 2s;
+}
+
+.win-wr.show .win {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+}
+.show .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 3em;
+  color: #fff;
+  line-height: 1em;
+  font-family: "Anton", sans-serif;
+  mix-blend-mode: screen;
+  transform-style: preserve-3d;
+}
+.show .text:nth-child(1) {
+  -webkit-clip-path: polygon(-30% 0, -20% 0, 20% 100%, 0% 100%);
+  clip-path: polygon(-30% 0, -20% 0, 20% 100%, 0% 100%);
+  -webkit-animation: wave 2000ms -10000ms ease-in-out infinite alternate;
+  animation: wave 2000ms -10000ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(2) {
+  -webkit-clip-path: polygon(-17% 0, -7% 0, 33% 100%, 13% 100%);
+  clip-path: polygon(-17% 0, -7% 0, 33% 100%, 13% 100%);
+  -webkit-animation: wave 2000ms -9480ms ease-in-out infinite alternate;
+  animation: wave 2000ms -9480ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(3) {
+  -webkit-clip-path: polygon(-4% 0, 6% 0, 46% 100%, 26% 100%);
+  clip-path: polygon(-4% 0, 6% 0, 46% 100%, 26% 100%);
+  -webkit-animation: wave 2000ms -8960ms ease-in-out infinite alternate;
+  animation: wave 2000ms -8960ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(4) {
+  -webkit-clip-path: polygon(9% 0, 19% 0, 59% 100%, 39% 100%);
+  clip-path: polygon(9% 0, 19% 0, 59% 100%, 39% 100%);
+  -webkit-animation: wave 2000ms -8440ms ease-in-out infinite alternate;
+  animation: wave 2000ms -8440ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(5) {
+  -webkit-clip-path: polygon(22% 0, 32% 0, 72% 100%, 52% 100%);
+  clip-path: polygon(22% 0, 32% 0, 72% 100%, 52% 100%);
+  -webkit-animation: wave 2000ms -7920ms ease-in-out infinite alternate;
+  animation: wave 2000ms -7920ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(6) {
+  -webkit-clip-path: polygon(35% 0, 45% 0, 85% 100%, 65% 100%);
+  clip-path: polygon(35% 0, 45% 0, 85% 100%, 65% 100%);
+  -webkit-animation: wave 2000ms -7400ms ease-in-out infinite alternate;
+  animation: wave 2000ms -7400ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(7) {
+  -webkit-clip-path: polygon(48% 0, 58% 0, 98% 100%, 78% 100%);
+  clip-path: polygon(48% 0, 58% 0, 98% 100%, 78% 100%);
+  -webkit-animation: wave 2000ms -6880ms ease-in-out infinite alternate;
+  animation: wave 2000ms -6880ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(8) {
+  -webkit-clip-path: polygon(61% 0, 71% 0, 111% 100%, 91% 100%);
+  clip-path: polygon(61% 0, 71% 0, 111% 100%, 91% 100%);
+  -webkit-animation: wave 2000ms -6360ms ease-in-out infinite alternate;
+  animation: wave 2000ms -6360ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(9) {
+  -webkit-clip-path: polygon(74% 0, 84% 0, 124% 100%, 104% 100%);
+  clip-path: polygon(74% 0, 84% 0, 124% 100%, 104% 100%);
+  -webkit-animation: wave 2000ms -5840ms ease-in-out infinite alternate;
+  animation: wave 2000ms -5840ms ease-in-out infinite alternate;
+}
+.show .text:nth-child(10) {
+  -webkit-clip-path: polygon(87% 0, 97% 0, 137% 100%, 117% 100%);
+  clip-path: polygon(87% 0, 97% 0, 137% 100%, 117% 100%);
+  -webkit-animation: wave 2000ms -5320ms ease-in-out infinite alternate;
+  animation: wave 2000ms -5320ms ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+    color: #001e64;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+    color: #32e6ff;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+    color: #001e64;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+    color: #32e6ff;
+  }
+}
