@@ -8,8 +8,9 @@
       body {
         height: 100svh;
         overflow: hidden;
-        display: grid;
-        place-items: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #000000;
         color: #fff;
         font-family: "Inter", "DM Sans", Arial, sans-serif;
@@ -96,7 +97,18 @@
         0% {
           scale: 1;
         }
-        100% {
+        99.9% {
           scale: 100;
+          background: radial-gradient(
+            circle at 50% 50%,
+            #fff,
+            #fff 1%,
+            #000 10%
+          );
+        }
+        100% {
+          background: #000000;
+          scale: 1;
+          z-index: -1;
         }
       }</style><link href="/css/app.d5bf7fc0.css" rel="preload" as="style"><link href="/js/app.5bdf2612.js" rel="preload" as="script"><link href="/js/chunk-vendors.695a5def.js" rel="preload" as="script"><link href="/css/app.d5bf7fc0.css" rel="stylesheet"></head><body><div class="content"><h1 class="title">nick spreen <img class="gr" src="https://i.imgur.com/6cuhjvH.jpg"></h1><a class="subtitle" href="//portfolio.spreen.co">portfolio 〉</a><div class="fade-in"></div></div><script src="/js/chunk-vendors.695a5def.js"></script><script src="/js/app.5bdf2612.js"></script></body></html>
